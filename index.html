@@ -37,28 +37,46 @@ function loadComponent(id, file, callback) {
 
 // Function to handle the sidebar toggle
 function handleSidebarToggle() {
-    const sidebarMenu = document.getElementById('sidebar-menu');
     const sidebarTextElements = document.querySelectorAll('.sidebar-text');
     const sidebar = document.getElementById('sidebar');
 
+    // Hamburger button click event
     document.getElementById('hamburger').addEventListener('click', function() {
-        if (sidebar.classList.contains('w-20')) {
-            sidebar.classList.remove('w-20');
-            sidebar.classList.add('w-64');
-            sidebarTextElements.forEach(element => {
-                element.classList.remove('hidden');
-                element.classList.add('inline-block');
-            });
-        } else {
+        if (sidebar.classList.contains('w-64')) {
             sidebar.classList.remove('w-64');
             sidebar.classList.add('w-20');
             sidebarTextElements.forEach(element => {
                 element.classList.remove('inline-block');
                 element.classList.add('hidden');
             });
+        } else {
+            sidebar.classList.remove('w-20');
+            sidebar.classList.add('w-64');
+            sidebarTextElements.forEach(element => {
+                element.classList.remove('hidden');
+                element.classList.add('inline-block');
+            });
         }
     });
+
+    // Sidebar icons click event
+    document.querySelectorAll('#sidebar-menu li').forEach(item => {
+        item.addEventListener('click', function() {
+            if (!sidebar.classList.contains('w-64')) {
+                sidebar.classList.remove('w-20');
+                sidebar.classList.add('w-64');
+                sidebarTextElements.forEach(element => {
+                    element.classList.remove('hidden');
+                    element.classList.add('inline-block');
+                });
+            }
+            // Here you can add the redirection logic if needed
+            // window.location.href = 'target_url';
+        });
+    });
 }
+
+
 
 // Load components and attach the sidebar toggle handler after loading the sidebar
 loadComponent('header', 'header.html');
