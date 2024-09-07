@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-100 h-screen flex flex-col">
+    <div id="header"></div>
+    <!-- <div id="sub-header"></div> -->
+
+
+    <!-- Main Content -->
+    <div class="flex-1 flex overflow-hidden">
+        <div id="sidebar"></div>
+        <div>
+            <div id="sub-header"></div>
+            <div id="wide-space" class="h-full"></div>
+        </div>
+    </div>
+
+    <script>
+    // Function to load components
+function loadComponent(id, file, callback) {
+    fetch(file)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(id).innerHTML = data;
+            if (callback) callback();
+        })
+        .catch(error => console.log('Error loading component:', error));
+}
+
+// Function to handle the sidebar toggle
+function handleSidebarToggle() {
+    const sidebarMenu = document.getElementById('sidebar-menu');
+    const sidebarTextElements = document.querySelectorAll('.sidebar-text');
+    const sidebar = document.getElementById('sidebar');
+
+    document.getElementById('hamburger').addEventListener('click', function() {
+        if (sidebar.classList.contains('w-20')) {
+            sidebar.classList.remove('w-20');
+            sidebar.classList.add('w-64');
+            sidebarTextElements.forEach(element => {
+                element.classList.remove('hidden');
+                element.classList.add('inline-block');
+            });
+        } else {
+            sidebar.classList.remove('w-64');
+            sidebar.classList.add('w-20');
+            sidebarTextElements.forEach(element => {
+                element.classList.remove('inline-block');
+                element.classList.add('hidden');
+            });
+        }
+    });
+}
+
+// Load components and attach the sidebar toggle handler after loading the sidebar
+loadComponent('header', 'header.html');
+loadComponent('sub-header', 'sub-header.html');
+loadComponent('sidebar', 'sidebar.html', handleSidebarToggle);
+loadComponent('wide-space', 'wide-space.html');
+
+
+
+    </script>
+</body>
+
+</html>
