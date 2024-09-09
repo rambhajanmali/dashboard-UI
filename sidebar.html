@@ -1,14 +1,14 @@
-<div class="bg-gray-100 h-screen flex flex-col">
+<div class="bg-gray-100 h-screen flex flex-col overflow-hidden">
 
     <!-- Sidebar -->
     <div id="sidebar" class=" bg-white/30 backdrop-blur-md border border-gray-200 text-gray-900 h-full relative flex flex-col  transition-all duration-300">
         <!-- Hamburger Menu -->
-        <button id="hamburger" class=" p-4 text-gray-700">
-            <i class="fa-solid fa-bars text-2xl "></i>
-        </button>
+        <button id="hamburger" class=" p-4 text-gray-700  fixed">
+            <i class="fa-solid fa-bars text-2xl"></i>
+        </button>           
 
         <!-- Sidebar Menu -->
-        <ul id="sidebar-menu" class=" space-y-4 flex-1 mt-8 justify-start">
+        <ul id="sidebar-menu" class=" space-y-6 flex-1 mt-16 mr-4 justify-start">
             <li class="flex items-center  hover:bg-green-100 rounded hover:text-green-900">
                 <i class="fa-solid fa-house text-xl ml-4" ></i>
                 <span class="sidebar-text ml-2 hidden">Dashboard</span>
@@ -17,13 +17,14 @@
                 <i class="fa-solid fa-chart-column text-xl ml-4"></i>
                 <span class="sidebar-text ml-2 hidden text-nowrap ">Plantation Data</span>
             </li>
-            <li class="flex items-center hover:bg-green-100 rounded hover:text-green-900">
-                <i class="fa-regular fa-file text-xl ml-4"></i>
-                <span class="sidebar-text ml-2 hidden">Certificate</span>
-            </li>
+           
             <li class="flex items-center  hover:bg-green-100 rounded hover:text-green-900">
                 <i class="fa-solid fa-user-group text-xl ml-4"></i>
                 <span class="sidebar-text ml-2 hidden">Users</span>
+            </li>
+            <li class="flex items-center hover:bg-green-100 rounded hover:text-green-900">
+                <i class="fa-regular fa-file text-xl ml-4"></i>
+                <span class="sidebar-text ml-2 hidden">Certificate</span>
             </li>
             <li class="flex items-center  hover:bg-green-100 rounded hover:text-green-900">
                 <i class="fa-solid fa-user text-xl ml-4"></i>
